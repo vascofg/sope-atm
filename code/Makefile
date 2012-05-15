@@ -1,16 +1,16 @@
 all: server client admin
 
-server: server.o serverMain.o account.o
+server: server.o account.o
 	@echo Assembling $^
 	@mkdir -p bin
 	@gcc obj/server*.o obj/account.o -I./include/ -Wall -o bin/$@
 
-client: client.o clientMain.o
+client: client.o
 	@echo Assembling $^
 	@mkdir -p bin
 	@gcc obj/client*.o -I./include/ -Wall -o bin/$@
 
-admin: admin.o adminMain.o
+admin: admin.o
 	@echo Assembling $^
 	@mkdir -p bin
 	@gcc obj/admin*.o -I./include/ -Wall -o bin/$@
