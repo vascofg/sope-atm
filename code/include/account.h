@@ -5,19 +5,23 @@
  */
 #ifndef ACCOUNT_H_
 #define ACCOUNT_H_
-#include <stdbool.h>
 /** A struct for holding the information of a Bank Account.
  */
-
-typedef short unsigned pin_t; /* the pin type */
+#define MAX_USER_LENGTH 20
+#define PIN_LENGTH 4
 typedef int unsigned accountnr_t; /* the account number type */
 
 struct Account {
 	accountnr_t number; /* The number that starts from 0 (not the NIB standard) */
 	char *user; /* the name of the user of the Account */
-	pin_t pin; /* the 4 digits pin */
+	char* pin; /* the 4 digits pin */
 	double balance; /* the money balance */
 };
+/** Create an account
+ * @param nr the pointer for the account struct
+ * @param ammount the money to deposit
+ */
+int account_create(struct Account *a,accountnr_t nr, char *usr, char *pin, double initialBalance);
 
 /** Does a deposit of money from an account
  * @param *a the pointer for the account struct
@@ -28,9 +32,9 @@ void account_deposit(struct Account *a, double amount);
 /** Withdraw money from an account
  * @param *a the pointer for the account struct
  * @param ammount the money to deposit
- * @return 0 if success
+ * @return 1 if success
  */
-bool account_withdraw(struct Account *a, double amount);
+int account_withdraw(struct Account *a, double amount);
 
 /** Get the balance from an account
  * @param *a the pointer for the account struct

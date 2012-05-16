@@ -1,13 +1,31 @@
 #include "account.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int account_create(struct Account *a,accountnr_t nr, char * usr, char *pin, double initialBalance){
+	if(strlen(usr)>MAX_USER_LENGTH || strlen(pin)!=PIN_LENGTH || initialBalance<0 || nr<1) return 0;
+	a->number=nr;
+	a->user=malloc(sizeof(char)*MAX_USER_LENGTH);
+	a->user=usr;
+	a->pin=malloc(sizeof(char)*PIN_LENGTH);
+	a->pin=pin;
+	a->balance=initialBalance;
+	return 1;
 
+}
 void account_deposit(struct Account *a, double amount) {
 	a->balance += amount;
 }
-bool account_withdraw(struct Account *a, double amount) {
+int account_withdraw(struct Account *a, double amount) {
 	if (a->balance < amount)
-		return false;
-	return true;
+		return 0;
+	return 1;
 }
 double account_getBalance(struct Account *a){
 	return a->number;
+}
+char * account_toString(struct Account *a){
+	char * buffer = malloc(sizeof (char) *100);
+	sprintf(buffer, "%08d %-20s %4s %13.2f",a->number, a->user, a->pin, a->balance);
+	return buffer;
 }
