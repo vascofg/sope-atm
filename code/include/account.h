@@ -5,12 +5,14 @@
  */
 #ifndef ACCOUNT_H_
 #define ACCOUNT_H_
+
 /** A struct for holding the information of a Bank Account.
  */
-#define MAX_USER_LENGTH 20
-#define PIN_LENGTH 4
-typedef int unsigned accountnr_t; /* the account number type */
 
+#define MAX_USER_LENGTH 20 /* The max lenght of the user */
+#define PIN_LENGTH 4 /* The length of the pin */
+typedef int unsigned accountnr_t; /* the account number type */
+extern int unsigned lastAccountNumber;
 struct Account {
 	accountnr_t number; /* The number that starts from 0 (not the NIB standard) */
 	char *user; /* the name of the user of the Account */
@@ -18,15 +20,33 @@ struct Account {
 	double balance; /* the money balance */
 };
 /** Create an account
- * @param nr the pointer for the account struct
+ * @param *a the pointer for the account struct
+ * @param nr the number of account
+ * @param usr the username
+ * @param pin the pin of the account
+ * @param initialBalance the initial ammount
  * @param ammount the money to deposit
  */
 int account_create(struct Account *a,accountnr_t nr, char *usr, char *pin, double initialBalance);
+
+/** Create an account with autoincrement
+ * @param *a the pointer for the account struct
+ * @param usr the username
+ * @param pin the pin of the account
+ * @param initialBalance the initial ammount
+ * @param ammount the money to deposit
+ */
+int account_createAutoIncrement(struct Account *a, char *usr, char *pin, double initialBalance);
+
+/** Reset the last account number
+ */
+void account_resetLastAccountNumber();
 
 /** Does a deposit of money from an account
  * @param *a the pointer for the account struct
  * @param ammount the money to deposit
  */
+
 void account_deposit(struct Account *a, double amount);
 
 /** Withdraw money from an account
