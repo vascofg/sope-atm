@@ -1,18 +1,22 @@
 /**
-	Authors: - André Freitas p.andrefreitas@gmail.com
-	 	 	 - Vasco Gonçalves vascofg@gmail.com
-	Copyright: 2012, Faculdade de Engenharia da Universidade do Porto
+ Authors: - André Freitas p.andrefreitas@gmail.com
+ - Vasco Gonçalves vascofg@gmail.com
+ Copyright: 2012, Faculdade de Engenharia da Universidade do Porto
  */
 #ifndef ACCOUNT_H_
 #define ACCOUNT_H_
 
-/** A struct for holding the information of a Bank Account.
+/** Some variables useful to the implementation
  */
 
-#define MAX_USER_LENGTH 20 /* The max lenght of the user */
+#define MAX_USER_LENGTH 20 	/* The max lenght of the user */
 #define PIN_LENGTH 4 /* The length of the pin */
 typedef int unsigned accountnr_t; /* the account number type */
 extern int unsigned lastAccountNumber;
+
+/** A struct for holding the information of a Bank Account.
+ */
+
 struct Account {
 	accountnr_t number; /* The number that starts from 0 (not the NIB standard) */
 	char *user; /* the name of the user of the Account */
@@ -27,7 +31,8 @@ struct Account {
  * @param initialBalance the initial ammount
  * @param ammount the money to deposit
  */
-int account_create(struct Account *a,accountnr_t nr, char *usr, char *pin, double initialBalance);
+int account_create(struct Account *a, accountnr_t nr, char *usr, char *pin,
+		double initialBalance);
 
 /** Create an account with autoincrement
  * @param *a the pointer for the account struct
@@ -36,7 +41,8 @@ int account_create(struct Account *a,accountnr_t nr, char *usr, char *pin, doubl
  * @param initialBalance the initial ammount
  * @param ammount the money to deposit
  */
-int account_createAutoIncrement(struct Account *a, char *usr, char *pin, double initialBalance);
+int account_createAutoIncrement(struct Account *a, char *usr, char *pin,
+		double initialBalance);
 
 /** Reset the last account number
  */
