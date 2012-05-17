@@ -11,9 +11,9 @@ int account_create(struct Account *a, accountnr_t nr, char * usr, char *pin,
 		return 0;
 	a->number = nr;
 	a->user = malloc(sizeof(char) * (MAX_USER_LENGTH + 1));
-	a->user = usr;
+	strcpy(a->user,usr);
 	a->pin = malloc(sizeof(char) * (PIN_LENGTH + 1));
-	a->pin = pin;
+	strcpy(a->pin,pin);
 	a->balance = initialBalance;
 	return 1;
 
