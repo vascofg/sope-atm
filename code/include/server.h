@@ -23,11 +23,11 @@ int server_createAccount(struct Server *s, accountnr_t nr, char *usr, char *pin,
 		double initialBalance);
 int server_deleteAccount(struct Server *s, accountnr_t nr);
 double server_getAccountBalance(struct Server *s, accountnr_t nr);
-int server_depositAccount(struct Server *s, double amount);
+int server_depositAccount(struct Server *s, accountnr_t nr, double amount);
 int server_authAccount(struct Server *s, accountnr_t nr, char *pinGiven);
 int server_transfer(struct Server *s, accountnr_t source,
 		accountnr_t destination, double amount);
 int server_witdhdraw(struct Server *s, accountnr_t nr, double amount);
-struct * Account server_getAccountbyID(struct Server *s, accountnr_t nr);
+struct Account* server_getAccountbyID(struct Server *s, accountnr_t nr);
 
 #endif /* SERVER_C_ */
