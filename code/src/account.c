@@ -36,7 +36,7 @@ int account_withdraw(struct Account *a, double amount) {
 	return 1;
 }
 double account_getBalance(struct Account *a) {
-	return a->number;
+	return a->balance;
 }
 char * account_toString(struct Account *a) {
 	char * buffer = malloc(sizeof(char) * 100);

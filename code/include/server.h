@@ -28,5 +28,6 @@ int server_authAccount(struct Server *s, accountnr_t nr, char *pinGiven);
 int server_transfer(struct Server *s, accountnr_t source,
 		accountnr_t destination, double amount);
 int server_witdhdraw(struct Server *s, accountnr_t nr, double amount);
+struct * Account server_getAccountbyID(struct Server *s, accountnr_t nr);
 
 #endif /* SERVER_C_ */
